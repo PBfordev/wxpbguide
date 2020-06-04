@@ -5,7 +5,7 @@ REM test whether there is a GCC-based compiler in PATH
 where $PATH:gcc.exe
 IF %ERRORLEVEL% NEQ 0 goto GCC_NOT_FOUND
 
-echo WARNING: GCC was found found in a folder included in PATH, see above!
+echo WARNING: GCC was found in a folder included in PATH, see above!
 goto FINISHED
 
 :GCC_NOT_FOUND
