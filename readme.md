@@ -10,6 +10,11 @@ detail setting-up a wxWidgets project in popular IDE Code::Blocks.
 This guide does not cover actual wxWidgets programming nor using Code::Blocks 
 (besides the steps necessary to set up a wxWidgets project).
 
+NOTE
+I suggest viewing this guide in a proper PDF viewer (such as Adobe Acrobat Reader),
+since GitHub's PDF viewer seems not to support displaying navigatable
+table of contents or clicking on internal cross-references.
+
 
 
 
