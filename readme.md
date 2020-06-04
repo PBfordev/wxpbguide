@@ -12,7 +12,7 @@ This guide does not cover actual wxWidgets programming nor using Code::Blocks
 
 NOTE
 I suggest viewing this guide in a proper PDF viewer (such as Adobe Acrobat Reader),
-since GitHub's PDF viewer seems not to support displaying navigatable
+since GitHub's PDF viewer seems not to support displaying navigable
 table of contents or clicking on internal cross-references.
 
 

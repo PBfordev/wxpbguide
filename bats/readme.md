@@ -1,8 +1,8 @@
 PB’s Guide to Starting with wxWidgets on Microsoft Windows with MinGW and Code::Blocks
 ===============
 
-This folder contains batches for building wxWidgets (build)
-and helper batches (tools).
+This folder contains  folders with batches for building 
+wxWidgets (folder *build*) and helper batches (folder *tools*).
 
 
 build
@@ -14,7 +14,7 @@ Builds Shared Debug and Release wxWidgets libraries.
 
 *build-library-shared-parallel.bat*
 Builds Shared Debug and Release wxWidgets libraries
-using parallel building with 4 tasks.
+using parallel building with 4 jobs.
 
 *build-library-shared-simplest.bat*
 Builds Shared Debug and Release wxWidgets libraries
@@ -27,7 +27,7 @@ with GCC libraries linked statically.
 *build-library-static-parallel.bat*
 Builds Static Debug and Release wxWidgets libraries
 with GCC libraries linked statically,
-using parallel building with 4 tasks.
+using parallel building with 4 jobs.
 
 *build-sample-minimal-shared-debug.bat*
 Builds minimal sample for Shared Debug configuration.
