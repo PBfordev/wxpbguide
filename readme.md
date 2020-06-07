@@ -7,6 +7,11 @@ to use and show how to build wxWidgets using MinGW with various
 parameters affecting the resulting build. It also describes in 
 detail setting-up a wxWidgets project in popular IDE Code::Blocks.
 
+Current Guide Version
+---------------
+1.1, released June 7, 2020
+
+
 Versions of Software Used in Guide
 ---------------
 *wxWidgets:* 3.1.3
