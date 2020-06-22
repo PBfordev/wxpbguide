@@ -9,7 +9,7 @@ detail setting-up a wxWidgets project in popular IDE Code::Blocks.
 
 Current Guide Version
 ---------------
-1.1, released June 7, 2020
+1.2, released June 22, 2020
 
 
 Versions of Software Used in Guide
@@ -31,7 +31,3 @@ Note
 I suggest viewing this guide in a proper PDF viewer (such as Adobe Acrobat Reader),
 since GitHub's PDF viewer seems not to support displaying navigable
 table of contents or clicking on internal cross-references.
-
-
-
-
