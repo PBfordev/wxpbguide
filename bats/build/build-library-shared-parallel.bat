@@ -18,7 +18,7 @@ mingw32-make -j4 -f makefile.gcc SHARED=1 BUILD=release CXXFLAGS="-std=c++17"
 IF %ERRORLEVEL% NEQ 0 goto FAIL
 
 
-goto SUCCESS:
+goto SUCCESS
 
 :FAIL
 echo Build failed!
