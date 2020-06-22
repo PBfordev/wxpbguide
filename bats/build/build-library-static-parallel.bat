@@ -19,6 +19,7 @@ IF %ERRORLEVEL% NEQ 0 goto FAIL
 
 
 goto SUCCESS
+
 :FAIL
 echo Build failed!
 pause
