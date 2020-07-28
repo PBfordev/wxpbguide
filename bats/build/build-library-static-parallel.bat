@@ -5,13 +5,13 @@ set PATH=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-sjlj-rt_v6-rev0\mingw
 cd /d %WXWIN%\build\MSW
 
 
-REM Build wxWidgets Shared Debug configuration with C++17 support
+REM Build wxWidgets Static Debug configuration with C++17 support
 mingw32-make -f makefile.gcc SHARED=0 BUILD=debug CXXFLAGS="-std=c++17" LDFLAGS="-static" setup_h
 IF %ERRORLEVEL% NEQ 0 goto FAIL
 mingw32-make -j4 -f makefile.gcc SHARED=0 BUILD=debug CXXFLAGS="-std=c++17" LDFLAGS="-static"
 IF %ERRORLEVEL% NEQ 0 goto FAIL
 
-REM Build wxWidgets Shared Release configuration with C++17 support
+REM Build wxWidgets Static Release configuration with C++17 support
 mingw32-make -f makefile.gcc SHARED=0 BUILD=release CXXFLAGS="-std=c++17" LDFLAGS="-static" setup_h
 IF %ERRORLEVEL% NEQ 0 goto FAIL
 mingw32-make -j4 -f makefile.gcc SHARED=0 BUILD=release CXXFLAGS="-std=c++17" LDFLAGS="-static"
