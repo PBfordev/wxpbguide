@@ -9,14 +9,14 @@ detail setting-up a wxWidgets project in popular IDE Code::Blocks.
 
 Current Guide Version
 ---------------
-1.3, released June 30, 2020
+2.0, released August 13, 2020
 
 
 Versions of Software Used in Guide
 ---------------
-*wxWidgets:* 3.1.3
+*wxWidgets:* 3.1.4
 
-*mingw-w64:* i686-8.1.0-posix-sjlj-rt_v6-rev0
+*MinGW:* MSYS2 mingw-w64-i686-toolchain (GCC 10.2 at the time of writing)
 
 *Code::Blocks:* 20.03
 
