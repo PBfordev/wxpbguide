@@ -9,7 +9,7 @@ detail setting-up a wxWidgets project in popular IDE Code::Blocks.
 
 Current Guide Version
 ---------------
-2.0, released August 13, 2020
+2.1, released August 14, 2020
 
 
 Versions of Software Used in Guide
