@@ -7,6 +7,9 @@ to use and show how to build wxWidgets using MinGW with various
 parameters affecting the resulting build. It also describes in 
 detail setting-up a wxWidgets project in popular IDE Code::Blocks.
 
+This guide is not a reference manual, it is a tutorial for new users 
+of wxWidgets, MinGW, and Code::Blocks; supposed to be followed step by step.
+
 Current Guide Version
 ---------------
 2.1, released August 14, 2020
