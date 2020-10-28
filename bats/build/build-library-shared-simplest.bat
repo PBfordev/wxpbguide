@@ -4,5 +4,5 @@ set PATH=C:\msys64\mingw32\bin;%PATH%
 
 cd /d %WXWIN%\build\MSW
 
-mingw32-make -f makefile.gcc SHARED=1 BUILD=debug
-mingw32-make -f makefile.gcc SHARED=1 BUILD=release
+mingw32-make -f makefile.gcc SHARED=1 BUILD=debug SHELL=cmd.exe
+mingw32-make -f makefile.gcc SHARED=1 BUILD=release SHELL=cmd.exe

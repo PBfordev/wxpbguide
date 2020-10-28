@@ -6,18 +6,18 @@ cd /d %WXWIN%\build\MSW
 
 
 REM Build wxWidgets Shared Debug configuration with C++17 support
-mingw32-make -f makefile.gcc SHARED=1 BUILD=debug CXXFLAGS="-std=c++17"
+mingw32-make -f makefile.gcc SHARED=1 BUILD=debug CXXFLAGS="-std=c++17" SHELL=cmd.exe
 IF %ERRORLEVEL% NEQ 0 goto FAIL
 
 REM Build wxWidgets Shared Release configuration with C++17 support
-mingw32-make -f makefile.gcc SHARED=1 BUILD=release CXXFLAGS="-std=c++17"
+mingw32-make -f makefile.gcc SHARED=1 BUILD=release CXXFLAGS="-std=c++17" SHELL=cmd.exe
 IF %ERRORLEVEL% NEQ 0 goto FAIL
 
 
 goto SUCCESS
 
 :FAIL
-echo Build failed!
+echo Build failed, see above why.
 pause
 goto FINISHED
 
