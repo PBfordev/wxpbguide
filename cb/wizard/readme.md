@@ -4,7 +4,7 @@ This folder contains updated wxWidgets project wizard for Code::Blocks, to be us
 PB’s Guide to Starting with wxWidgets on Microsoft Windows with MinGW and Code::Blocks. 
 The changes affect only Microsoft Windows platform and (mostly) GCC compiler.
 
-Notable changes from the wizard shipped with Code::Blocks 20.03:
+Notable changes from the wizard shipped with Code::Blocks 20.03
 -----
 - Remove support for obsolete wxWidgets versions 2.6 and 2.8.
 - Allow linking with libraries introduced in wxWidgets 2.9, i.e., PropertyGrid, Ribbon, STC, and WebView.
