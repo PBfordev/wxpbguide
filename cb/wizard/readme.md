@@ -18,3 +18,5 @@ Installation
 -----
 Put files `wizard.xrc` and `wizard.script` into your `%APPDATA%\CodeBlocks\share\codeblocks\templates\wizard\wxwidgets` folder
 (e.g., `c:\users\PB\AppData\Roaming\CodeBlocks\share\codeblocks\templates\wizard\wxwidgets`) and then just run the wizard as usual.
+
+Or you can use batch file `install.bat` which will do that for you (and `uninstall.bat` to remove a custom wxWidgets project wizard).
