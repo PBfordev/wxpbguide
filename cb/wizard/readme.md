@@ -7,6 +7,7 @@ The changes affect only Microsoft Windows platform and (mostly) GCC compiler.
 Notable changes from the wizard shipped with Code::Blocks 20.03
 -----
 - Remove support for obsolete wxWidgets versions 2.6 and 2.8.
+- Add support for wxWidgets 3.2 and 3.3
 - Allow linking with libraries introduced in wxWidgets 2.9, i.e., PropertyGrid, Ribbon, STC, and WebView.
 - Allow linking with OpenGL for the monolithic build too.
 - Do not ask whether to link with the 3rd party libraries (image formats, expat, regex, scintilla, zip), 

@@ -36,7 +36,7 @@ LibWxSTC <- false; // STC Lib
 LibWxPropertyGrid <- false; // PropertyGrid Lib
 LibWxRibbon <- false; // Ribbon Lib
 LibWxLinkWinSock2 <- false; // On Windows, link with WinSock2 instead of WinSock
-WxVersion <- 0; // 0 - wx 3.0, 1 - wx 3.1
+WxVersion <- 0; // 0 - 3.0, 1 - 3.2, 2 = 3.3
 DebugTarget <- 1; // Target Type; 0 - Console, 1 - GUI
 ReleaseTarget <- 1; // Target Type; 0 - Console, 1 - GUI
 FileName <- _T(""); // Filename for wizard
@@ -72,7 +72,7 @@ function BeginWizard()
         Wizard.AddInfoPage(_T("WxIntro"), intro_msg);
         Wizard.AddGenericSingleChoiceListPage(_T("wxVersionPage"),
                                               _T("Please select the wxWidgets version you want to use."),
-                                              _T("wxWidgets 3.0.x;wxWidgets 3.1.x"),
+                                              _T("wxWidgets 3.0.x;wxWidgets 3.2.x;wxWidgets 3.3.x"),
                                               WxVersion); // select wxwidgets version
         Wizard.AddProjectPathPage();
         Wizard.AddPage(_T("WxProjDetails"));
@@ -103,7 +103,7 @@ function BeginWizard()
         Wizard.AddInfoPage(_T("WxIntro"), intro_msg);
         Wizard.AddGenericSingleChoiceListPage(_T("wxVersionPage"),
                                               _T("Please select the wxWidgets version you want to use."),
-                                              _T("wxWidgets 3.0.x;wxWidgets 3.1.x"),
+                                              _T("wxWidgets 3.0.x;wxWidgets 3.2.x;wxWidgets 3.3.x"),
                                               WxVersion); // select wxwidgets version
         if (PLATFORM == PLATFORM_MSW)
             Wizard.AddGenericSelectPathPage(_T("WxPath"), wxpath_msg, _T("wxWidgets' location:"), _T("$(#wx)"));
@@ -364,7 +364,9 @@ function OnLeave_WxConf(fwd)
         if (WxVersion == 0)
             lib_wxver = _T("30");
         else if (WxVersion == 1)
-            lib_wxver = _T("31");
+            lib_wxver = _T("32");
+        else
+            lib_wxver = _T("33");
 
         // Now set the global variables
         LibPrefix = lib_prefix; // Prefix of lib name
@@ -517,7 +519,9 @@ function OnLeave_WxConfUnix(fwd)
         if (WxVersion == 0)
             LibWxVer = _T("3.0");
         else if (WxVersion == 1)
-            LibWxVer = _T("3.1");
+            LibWxVer = _T("3.2");
+        else
+            LibWxVer = _T("3.3");
 
         // Ask the user whether wizard shall add PCH support when empty Project is selected
         if (IsEmpty && WantPCH)
