@@ -23,7 +23,6 @@ LibDebugSuffix <- _T("d"); // Suffix for Debug wx Lib
 LibSuffix <- _T(""); // Suffix for Lib, defines file extension
 LibWxXML <- false; // XML Lib
 LibWxXRC <- false; // XRC Lib
-LibWxAdvanced <- false; //Advanced Lib
 LibWxAUI <- false; // AUI Lib
 LibWxHTML <- false; // HTML Lib
 LibWxMedia <- false; // Media Lib
@@ -35,8 +34,7 @@ LibWxWebView <- false; // WebView Lib
 LibWxSTC <- false; // STC Lib
 LibWxPropertyGrid <- false; // PropertyGrid Lib
 LibWxRibbon <- false; // Ribbon Lib
-LibWxLinkWinSock2 <- false; // On Windows, link with WinSock2 instead of WinSock
-WxVersion <- 0; // 0 - 3.0, 1 - 3.2, 2 = 3.3
+WxVersion <- 0; // 0 - 3.2, 1 - 3.3
 DebugTarget <- 1; // Target Type; 0 - Console, 1 - GUI
 ReleaseTarget <- 1; // Target Type; 0 - Console, 1 - GUI
 FileName <- _T(""); // Filename for wizard
@@ -72,7 +70,7 @@ function BeginWizard()
         Wizard.AddInfoPage(_T("WxIntro"), intro_msg);
         Wizard.AddGenericSingleChoiceListPage(_T("wxVersionPage"),
                                               _T("Please select the wxWidgets version you want to use."),
-                                              _T("wxWidgets 3.0.x;wxWidgets 3.2.x;wxWidgets 3.3.x"),
+                                              _T("wxWidgets 3.2.x;wxWidgets 3.3.x"),
                                               WxVersion); // select wxwidgets version
         Wizard.AddProjectPathPage();
         Wizard.AddPage(_T("WxProjDetails"));
@@ -103,7 +101,7 @@ function BeginWizard()
         Wizard.AddInfoPage(_T("WxIntro"), intro_msg);
         Wizard.AddGenericSingleChoiceListPage(_T("wxVersionPage"),
                                               _T("Please select the wxWidgets version you want to use."),
-                                              _T("wxWidgets 3.0.x;wxWidgets 3.2.x;wxWidgets 3.3.x"),
+                                              _T("wxWidgets 3.2.x;wxWidgets 3.3.x"),
                                               WxVersion); // select wxwidgets version
         if (PLATFORM == PLATFORM_MSW)
             Wizard.AddGenericSelectPathPage(_T("WxPath"), wxpath_msg, _T("wxWidgets' location:"), _T("$(#wx)"));
@@ -362,8 +360,6 @@ function OnLeave_WxConf(fwd)
             lib_unic_suffix = _T("");
 
         if (WxVersion == 0)
-            lib_wxver = _T("30");
-        else if (WxVersion == 1)
             lib_wxver = _T("32");
         else
             lib_wxver = _T("33");
@@ -517,9 +513,7 @@ function OnLeave_WxConfUnix(fwd)
         }
 
         if (WxVersion == 0)
-            LibWxVer = _T("3.0");
-        else if (WxVersion == 1)
-            LibWxVer = _T("3.2");
+            LibWxVer = _T("3.2");        
         else
             LibWxVer = _T("3.3");
 
@@ -762,14 +756,9 @@ function SetupProject(project)
             project.AddLinkLib(LibPrefix + _T("oleaut32") + LibSuffix);
             project.AddLinkLib(LibPrefix + _T("uuid") + LibSuffix);
             project.AddLinkLib(LibPrefix + _T("comctl32") + LibSuffix);
-            if (LibWxLinkWinSock2)
-                project.AddLinkLib(LibPrefix + _T("ws2_32") + LibSuffix);
-            else
-                project.AddLinkLib(LibPrefix + _T("wsock32") + LibSuffix);
-            if (LibWxGL) project.AddLinkLib(LibPrefix + _T("opengl32") + LibSuffix);
+            project.AddLinkLib(LibPrefix + _T("ws2_32") + LibSuffix);
 
-            // needed for wxWidgets 3.1 and newer
-            if (WxVersion >= 1 && GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("gcc*")))
+            if (GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("gcc*")))
             {
                 project.AddLinkLib(LibPrefix + _T("shlwapi") + LibSuffix);
                 project.AddLinkLib(LibPrefix + _T("version") + LibSuffix);
@@ -777,9 +766,15 @@ function SetupProject(project)
                 project.AddLinkLib(LibPrefix + _T("uxtheme") + LibSuffix);
                 if (LibWxSTC) project.AddLinkLib(LibPrefix + _T("imm32") + LibSuffix);
             }
-
-
         }
+
+        if (LibWxGL)
+        {
+            // add these two libraries as well, as the user is probably going to use their functions
+            project.AddLinkLib(LibPrefix + _T("opengl32") + LibSuffix);
+            project.AddLinkLib(LibPrefix + _T("glu32") + LibSuffix);
+        }
+
     }
 
 
@@ -1107,7 +1102,6 @@ function SetupTarget(target, is_debug)
             if (LibWxGL) target.AddLinkLib(GetMSWwxLibraryFileName(false, _T("gl")));
             if (LibWxQA) target.AddLinkLib(GetMSWwxLibraryFileName(false, _T("qa")));
             if (LibWxXML) target.AddLinkLib(GetMSWwxLibraryFileName(true, _T("xml")));
-            if (LibWxAdvanced) target.AddLinkLib(GetMSWwxLibraryFileName(false, _T("adv")));
             if (LibWxHTML) target.AddLinkLib(GetMSWwxLibraryFileName(false, _T("html")));
             target.AddLinkLib(GetMSWwxLibraryFileName(false, _T("core")));
             target.AddLinkLib(GetMSWwxLibraryFileName(true, _T(""))); // the base library itself
@@ -1218,19 +1212,6 @@ function OnGetPrevPage_WxAddLib()
 
 function OnEnter_WxAddLib(fwd)
 {
-    if (fwd)
-    {
-        if (IsDLL) // no linking against any winsock needed
-        {
-            Wizard.CheckCheckbox(_T("chkWxLinkWinsock2"), false);
-            Wizard.EnableWindow(_T("chkWxLinkWinsock2"), false);
-        }
-        else
-        {
-            Wizard.CheckCheckbox(_T("chkWxLinkWinsock2"), GetConfigManager().Read(_T("/wx_project_wizard/winsock2"), LibWxLinkWinSock2));
-            Wizard.EnableWindow(_T("chkWxLinkWinsock2"), true);
-        }
-    }
     return true;
 }
 
@@ -1253,7 +1234,6 @@ function OnLeave_WxAddLib(fwd)
             }
         }
 
-        LibWxLinkWinSock2 = Wizard.IsCheckboxChecked(_T("chkWxLinkWinsock2"));
         AddlLibList = Wizard.GetListboxStringSelections(_T("lstWxLibs"));
     }
     return true;
@@ -1287,16 +1267,6 @@ function OnEnter_WxAddLibMono(fwd)
 
         Wizard.CheckCheckbox(_T("chkWxLinkOpenGLMono"), configManager.Read(_T("/wx_project_wizard/linkopenglmono"), false));
 
-        if (IsDLL) // no linking against any winsock needed
-        {
-            Wizard.CheckCheckbox(_T("chkWxLinkWinsock2Mono"), false);
-            Wizard.EnableWindow(_T("chkWxLinkWinsock2Mono"), false);
-        }
-        else
-        {
-            Wizard.CheckCheckbox(_T("chkWxLinkWinsock2Mono"), configManager.Read(_T("/wx_project_wizard/winsock2mono"), LibWxLinkWinSock2));
-            Wizard.EnableWindow(_T("chkWxLinkWinsock2Mono"), true);
-        }
     }
     return true;
 }
@@ -1306,7 +1276,6 @@ function OnLeave_WxAddLibMono(fwd)
     if (fwd)
     {
         LibWxGL =  Wizard.IsCheckboxChecked(_T("chkWxLinkOpenGLMono"));
-        LibWxLinkWinSock2 = Wizard.IsCheckboxChecked(_T("chkWxLinkWinsock2Mono"));
         
         // Assume that XML and STC is always used and set the vars to true
         // since we will need it to link scintilla and expat
@@ -1534,7 +1503,6 @@ function SetupAddlLibs()
         LibWxGL = (tempLibArray.Index(_T("wxGL")) >=0);
         LibWxQA = (tempLibArray.Index(_T("wxQA")) >=0);
         LibWxXML = (tempLibArray.Index(_T("wxXML")) >=0) || LibWxRichText || LibWxXRC || LibWxQA;
-        LibWxAdvanced = (tempLibArray.Index(_T("wxAdvanced")) >=0) || LibWxRichText || LibWxXRC;
         LibWxHTML = (tempLibArray.Index(_T("wxHTML")) >=0) || LibWxRichText || LibWxXRC;
     }
 }

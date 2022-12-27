@@ -232,7 +232,6 @@
 			<object class="sizeritem">
 				<object class="wxListBox" name="lstWxLibs">
 					<content>
-						<item>wxAdvanced</item>
 						<item>wxAUI</item>
 						<item>wxGL</item>
 						<item>wxHTML</item>
@@ -252,14 +251,6 @@
 				<flag>wxALL|wxEXPAND</flag>
 				<border>8</border>
 			</object>
-		<object class="sizeritem">
-			<object class="wxCheckBox" name="chkWxLinkWinsock2">
-				<label>Link with Winsock2 instead Winsock</label>
-				<tooltip>For static build only, needed by wxWidgets 3.1.6+</tooltip>
-			</object>
-			<flag>wxALL</flag>
-			<border>8</border>
-		</object>
 	</object>
 	</object>
 	<object class="wxPanel" name="WxAddLibMono">
@@ -270,14 +261,6 @@
 				<object class="wxCheckBox" name="chkWxLinkOpenGLMono">
 					<label>Add OpenGL support</label>
 					<tooltip>Link with wxGL and opengl32 libraries</tooltip>
-				</object>
-				<flag>wxALL</flag>
-				<border>8</border>
-			</object>
-			<object class="sizeritem">
-				<object class="wxCheckBox" name="chkWxLinkWinSock2Mono">
-					<label>Link with Winsock2 instead Winsock</label>
-					<tooltip>For static build only, needed by wxWidgets 3.1.6+</tooltip>
 				</object>
 				<flag>wxALL</flag>
 				<border>8</border>
