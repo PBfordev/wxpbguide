@@ -12,14 +12,14 @@ of wxWidgets, MinGW, and Code::Blocks; supposed to be followed step by step.
 
 Current Guide Version
 ---------------
-4.2, released December 27, 2022
+4.3, released July 7, 2023
 
 
 Versions of Software Used in Guide
 ---------------
-*wxWidgets:* 3.2 (3.2.1 at the time of writing)
+*wxWidgets:* 3.2 (3.2.2.1 at the time of writing)
 
-*MinGW:* MSYS2 mingw-w64-x86_64-toolchain (GCC 12.2 at the time of writing)
+*MinGW:* MSYS2 mingw-w64-ucrt-x86_64-toolchain (GCC 13.1 at the time of writing)
 
 *Code::Blocks:* 20.03
 
