@@ -7,7 +7,7 @@ wxWidgets (folder *build*) and helper batches (folder *tools*).
 
 build
 ---------------
-Batches in this folder build wxWidgets with MSYS2 mingw-w64-i686 toolchain.
+Batches in this folder build wxWidgets with MSYS2 mingw-w64-ucrt-x86_64 toolchain.
 
 *build-library-shared.bat*
 Builds Shared Debug and Release wxWidgets libraries.
