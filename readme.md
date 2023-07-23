@@ -12,7 +12,7 @@ of wxWidgets, MinGW, and Code::Blocks; supposed to be followed step by step.
 
 Current Guide Version
 ---------------
-4.3, released July 7, 2023
+4.4, released July 23, 2023
 
 
 Versions of Software Used in Guide
