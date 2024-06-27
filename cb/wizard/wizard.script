@@ -281,6 +281,12 @@ function OnLeave_WxConf(fwd)
         WantPCH = Wizard.IsCheckboxChecked(_T("chkWxConfPCH"));
         Configuration = Wizard.GetTextControlValue(_T("txtWxConfConfig"));
 
+        if (WxVersion == 1 && !IsUnicode)
+        {
+            Message(_T("wxWidgets 3.3 must use Unicode."), _T("wxWidgets Project Wizard"), wxICON_WARNING | wxOK)
+            return false
+        }
+
         // Ask the user whether wizard shall add PCH support when empty Project is selected
         if (IsEmpty && WantPCH)
         {
@@ -757,7 +763,11 @@ function SetupProject(project)
             project.AddLinkLib(LibPrefix + _T("uuid") + LibSuffix);
             project.AddLinkLib(LibPrefix + _T("comctl32") + LibSuffix);
             project.AddLinkLib(LibPrefix + _T("ws2_32") + LibSuffix);
-
+            if (WxVersion == 1)
+            {
+                project.AddLinkLib(LibPrefix + _T("gdiplus") + LibSuffix);
+                project.AddLinkLib(LibPrefix + _T("msimg32") + LibSuffix);
+            }
             if (GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("gcc*")))
             {
                 project.AddLinkLib(LibPrefix + _T("shlwapi") + LibSuffix);

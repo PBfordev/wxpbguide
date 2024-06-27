@@ -12,8 +12,10 @@ Notable changes from the wizard shipped with Code::Blocks 20.03
 - Allow linking with OpenGL for the monolithic build too.
 - Do not ask whether to link with the 3rd party libraries (image formats, expat, regex, scintilla, zip), 
   they are not needed for the DLL build and required for the static build.
+- Link to gdiplus and msimg32 libraries when using static build of wxWidgets 3.3.
 - Allow linking with Winsock2 instead of Winsock.
 - By default, assume Unicode will be used and the generated application will be GUI instead of console one.
+- Do not allow trying to use non-Unicode build of wxWidgets 3.3.
 
 Installation
 -----
